@@ -17,7 +17,7 @@ public class KursverwaltungsDb extends SQLiteOpenHelper {
     private static Object LOCK = "";
 
     private KursverwaltungsDb(Context context){
-        super (context, this.DATABASENAME, null, this.DATABASEVERSION);
+        super (context, DATABASENAME, null, DATABASEVERSION);
     }
 
 

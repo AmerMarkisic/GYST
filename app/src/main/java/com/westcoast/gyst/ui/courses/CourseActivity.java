@@ -1,38 +1,35 @@
-package com.westcoast.gyst.student;
+package com.westcoast.gyst.ui.courses;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.HapticFeedbackConstants;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.orm.SugarContext;
+import com.westcoast.gyst.R;
+import com.westcoast.gyst.db.entities.Course;
+import com.westcoast.gyst.db.adapters.CourseAdapter;
+import com.westcoast.gyst.infrastructure.RecyclerItemClickListener;
+import com.westcoast.gyst.ui.students.StudentActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.orm.SugarContext;
-import com.westcoast.gyst.CreateCourseDialog;
-import com.westcoast.gyst.EditCourseDialog;
-import com.westcoast.gyst.R;
-import com.westcoast.gyst.db.entities.Course;
-import com.westcoast.gyst.db.adapters.CourseAdapter;
-import com.westcoast.gyst.db.entities.Student;
-import com.westcoast.gyst.db.adapters.StudentAdapter;
-import com.westcoast.gyst.infrastructure.RecyclerItemClickListener;
+import android.view.ContextMenu;
+import android.view.HapticFeedbackConstants;
+import android.view.View;
+
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.List;
 
-public class StudentActivity extends AppCompatActivity implements RecyclerItemClickListener.OnItemClickListener,View.OnCreateContextMenuListener {
+public class CourseActivity extends AppCompatActivity implements RecyclerItemClickListener.OnItemClickListener,View.OnCreateContextMenuListener{
 
     private RecyclerView rv;
     private RecyclerView.Adapter adapter;
     private FloatingActionButton fab;
-
-    private int courseId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +46,6 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
         rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerItemClickListener(this, this));
         fab = findViewById(R.id.fab);
-
-        courseId = getIntent().getIntExtra("courseId",0);
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,9 +59,11 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
 
     }
 
+
+
     public void refresh(){
-        List<Student> students = Student.listAll(Student.class);
-        adapter = new StudentAdapter(students);
+        List<Course> courses = Course.listAll(Course.class);
+        adapter = new CourseAdapter(courses);
         rv.setAdapter(adapter);
     }
 
@@ -81,6 +77,8 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
     public void showCreateDialog(){
         CreateCourseDialog.display(getSupportFragmentManager());
     }
+
+
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -104,8 +102,11 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
 
     @Override
     public void onItemClick(View childView, int position) {
+        int id = (int) adapter.getItemId(position);
+        Intent intent = new Intent(CourseActivity.this, StudentActivity.class);
+        intent.putExtra("courseId", id);
 
-
+        startActivity(intent);
     }
 
     @Override
@@ -119,7 +120,7 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
 
     @Override
     public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-        StudentAdapter.StudentViewHolder holder = (StudentAdapter.StudentViewHolder)rv.getChildViewHolder(view);
+        CourseAdapter.CourseViewHolder holder = (CourseAdapter.CourseViewHolder)rv.getChildViewHolder(view);
         int position = holder.getAdapterPosition();
 
         int id = (int) adapter.getItemId(position);
@@ -141,6 +142,4 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
             }
         });
     }
-
-
 }

@@ -34,7 +34,4 @@ public class Grade extends SugarRecord {
     public void setSchuelerId(int schuelerId) {
         this.schuelerId = schuelerId;
     }
-
-
-
 }

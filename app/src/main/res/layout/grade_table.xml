@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+
+    <TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:textColor="@android:color/black"
+            android:id="@+id/overview-title"
+            android:textSize="18sp" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="1dp"
+            android:textColor="@android:color/black"
+            android:id="@+id/overview-grade-index" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="1dp"
+            android:textColor="@android:color/black"
+            android:id="@+id/overview-grade" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="1dp"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content"
+            android:id="@+id/overview-average"
+            android:textSize="18sp" />
+    </TableRow>
+
+
+</TableLayout>

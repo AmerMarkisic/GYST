@@ -1,23 +1,15 @@
-package com.westcoast.gyst.db;
+package com.westcoast.gyst.db.adapters;
 
 import android.content.Context;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.westcoast.gyst.CourseDialog;
-import com.westcoast.gyst.MainActivity;
 import com.westcoast.gyst.R;
-
-import org.w3c.dom.Text;
+import com.westcoast.gyst.db.entities.Course;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +24,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         this.dtList = list;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return dtList.get(position).getId();
+    }
 
     public CourseAdapter(List<Course> list){
         this.dtList = list;

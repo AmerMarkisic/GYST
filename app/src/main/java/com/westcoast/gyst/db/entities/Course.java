@@ -1,4 +1,4 @@
-package com.westcoast.gyst.db;
+package com.westcoast.gyst.db.entities;
 
 import com.orm.SugarRecord;
 import com.orm.dsl.Ignore;
@@ -13,20 +13,8 @@ public class Course extends SugarRecord {
     String zeit;
 
 
-    @Ignore
-    boolean showMenu = false;
-
     public Course(){
 
-    }
-
-
-    public void setShowMenu(boolean b){
-        this.showMenu = b;
-    }
-
-    public boolean isShowMenu(){
-        return this.showMenu;
     }
 
     public Course(String f, String k , String z){
@@ -34,6 +22,12 @@ public class Course extends SugarRecord {
         this.klasse = k;
         this.zeit = z;
     }
+
+    public void setFach(String f) { this.fach = f; }
+
+    public void setKlasse(String k) { this.klasse = k; }
+
+    public void setZeit(String z) { this.zeit = z; }
 
     public String getFach(){
         return fach;
@@ -45,9 +39,5 @@ public class Course extends SugarRecord {
 
     public String getZeit(){
         return zeit;
-    }
-
-    public List<Student> getStudents(){
-        return  Student.find(Student.class, "course = ?", getId().toString());
     }
 }

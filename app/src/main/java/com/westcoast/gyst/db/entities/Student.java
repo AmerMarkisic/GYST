@@ -50,7 +50,11 @@ public class Student extends SugarRecord {
     int CourseId;
 
 
-
+    public Student(String v, String n, String e){
+        this.vorname = v;
+        this.nachname = n;
+        this.email = e;
+    }
 
 
     public Student(){

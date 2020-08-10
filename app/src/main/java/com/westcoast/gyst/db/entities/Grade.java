@@ -1,6 +1,8 @@
 package com.westcoast.gyst.db.entities;
 
-public class Grade {
+import com.orm.SugarRecord;
+
+public class Grade extends SugarRecord {
 
     String beschreibung;
     String note;

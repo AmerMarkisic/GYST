@@ -9,15 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="DATABASE" android:value="gyst.db" />
+        <meta-data android:name="VERSION" android:value="3" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.westcoast.gyst.db.entities" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:name=".ui.courses.CourseActivity"
+            android:label="Kurse"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.students.StudentActivity"
+            android:label="Schueler"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ui.grades.GradeActivity"
+            android:label="Noten"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

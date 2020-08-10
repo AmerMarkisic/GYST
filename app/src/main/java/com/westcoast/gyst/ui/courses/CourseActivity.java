@@ -101,6 +101,18 @@ public class CourseActivity extends AppCompatActivity implements RecyclerItemCli
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        SugarContext.terminate();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        SugarContext.init(this);
+    }
+
+    @Override
     public void onItemClick(View childView, int position) {
         int id = (int) adapter.getItemId(position);
         Intent intent = new Intent(CourseActivity.this, StudentActivity.class);

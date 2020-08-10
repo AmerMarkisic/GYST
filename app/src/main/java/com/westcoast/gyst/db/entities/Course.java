@@ -1,9 +1,6 @@
 package com.westcoast.gyst.db.entities;
 
 import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
-
-import java.util.List;
 
 public class Course extends SugarRecord {
 

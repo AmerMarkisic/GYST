@@ -66,9 +66,9 @@ public class CreateStudentDialog extends DialogFragment {
         View view = inflater.inflate(R.layout.student_dialog, container, false);
 
         fab = view.findViewById(R.id.student_create);
-        vorname = view.findViewById(R.id.student_vorname);
-        nachname = view.findViewById(R.id.student_nachname);
-        email = view.findViewById(R.id.student_email);
+        vorname = view.findViewById(R.id.studentDialog_vorname);
+        nachname = view.findViewById(R.id.studentDialog_nachname);
+        email = view.findViewById(R.id.studentDialog_email);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,8 +83,7 @@ public class CreateStudentDialog extends DialogFragment {
     }
 
     public void save(){
-        Student student = new Student(vorname.getText().toString(), nachname.getText().toString(), email.getText().toString());
-        student.setCourseId(this.courseId);
+        Student student = new Student(vorname.getText().toString(), nachname.getText().toString(), email.getText().toString(), this.courseId);
         student.save();
         ((StudentActivity)getActivity()).refresh();
         dismiss();

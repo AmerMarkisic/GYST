@@ -20,7 +20,7 @@ public class Student extends SugarRecord {
     }
 
     public int getCourseId() {
-        return CourseId;
+        return courseId;
     }
 
     public void setVorname(String vorname) {
@@ -40,20 +40,27 @@ public class Student extends SugarRecord {
     }
 
     public void setCourseId(int courseId) {
-        CourseId = courseId;
+        courseId = courseId;
     }
 
     String vorname;
     String nachname;
     String durchschnitt;
     String email;
-    int CourseId;
+    int courseId;
 
 
     public Student(String v, String n, String e){
         this.vorname = v;
         this.nachname = n;
         this.email = e;
+    }
+
+    public Student(String v, String n, String e, int c){
+        this.vorname = v;
+        this.nachname = n;
+        this.email = e;
+        this.courseId = c;
     }
 
 

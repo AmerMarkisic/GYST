@@ -65,7 +65,7 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
 
     public void refresh(){
         Integer i = Integer.valueOf(courseId);
-        List<Student> students = Student.find(Student.class, "courseId = ?", i.toString());
+        List<Student> students = Student.find(Student.class, "course_id = ?", i.toString());
         adapter = new StudentAdapter(students);
         rv.setAdapter(adapter);
     }
@@ -102,6 +102,18 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        SugarContext.terminate();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        SugarContext.init(this);
+    }
+
+    @Override
     public void onItemClick(View childView, int position) {
 
 
@@ -126,15 +138,15 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
         contextMenu.add(1,id, 0, "Bearbeiten").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                EditCourseDialog.display(getSupportFragmentManager(), menuItem.getItemId());
+                EditStudentDialog.display(getSupportFragmentManager(), menuItem.getItemId());
                 return true;
             }
         });
         contextMenu.add(2,id, 0, "Löschen").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Course course = Course.findById(Course.class, menuItem.getItemId());
-                course.delete();
+                Student student = Student.findById(Student.class, menuItem.getItemId());
+                student.delete();
                 refresh();
                 return true;
             }

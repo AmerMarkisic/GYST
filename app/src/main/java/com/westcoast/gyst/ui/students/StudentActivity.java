@@ -60,7 +60,6 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
         });
 
         refresh();
-
     }
 
     public void refresh(){
@@ -127,7 +126,6 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
         unregisterForContextMenu(childView);
     }
 
-
     @Override
     public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
         StudentAdapter.StudentViewHolder holder = (StudentAdapter.StudentViewHolder)rv.getChildViewHolder(view);
@@ -152,6 +150,4 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
             }
         });
     }
-
-
 }

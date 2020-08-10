@@ -10,7 +10,7 @@
             android:layout_height="wrap_content"
             android:padding="1dp"
             android:textColor="@android:color/black"
-            android:id="@+id/overview-title"
+            android:id="@+id/overview_title"
             android:textSize="18sp" />
     </TableRow>
 
@@ -20,13 +20,13 @@
             android:layout_width="match_parent"
             android:padding="1dp"
             android:textColor="@android:color/black"
-            android:id="@+id/overview-grade-index" />
+            android:id="@+id/overview_grade_index" />
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:padding="1dp"
             android:textColor="@android:color/black"
-            android:id="@+id/overview-grade" />
+            android:id="@+id/overview_grade" />
     </TableRow>
 
     <TableRow>
@@ -35,7 +35,7 @@
             android:padding="1dp"
             android:textColor="@android:color/black"
             android:layout_height="wrap_content"
-            android:id="@+id/overview-average"
+            android:id="@+id/overview_average"
             android:textSize="18sp" />
     </TableRow>
 

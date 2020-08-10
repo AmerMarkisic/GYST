@@ -64,7 +64,8 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
     }
 
     public void refresh(){
-        List<Student> students = Student.listAll(Student.class);
+        Integer i = Integer.valueOf(courseId);
+        List<Student> students = Student.find(Student.class, "courseId = ?", i.toString());
         adapter = new StudentAdapter(students);
         rv.setAdapter(adapter);
     }
@@ -77,7 +78,7 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
     }
 
     public void showCreateDialog(){
-        CreateCourseDialog.display(getSupportFragmentManager());
+        CreateStudentDialog.display(getSupportFragmentManager(), courseId);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

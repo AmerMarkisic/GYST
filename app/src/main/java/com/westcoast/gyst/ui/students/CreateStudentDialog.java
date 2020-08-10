@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.westcoast.gyst.R;
-import com.westcoast.gyst.db.entities.Course;
 import com.westcoast.gyst.db.entities.Student;
 
 public class CreateStudentDialog extends DialogFragment {
@@ -91,9 +90,6 @@ public class CreateStudentDialog extends DialogFragment {
         dismiss();
     }
 
-
-
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
@@ -104,8 +100,4 @@ public class CreateStudentDialog extends DialogFragment {
             return true;
         });
     }
-
-
-
-
 }

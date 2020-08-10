@@ -59,13 +59,18 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.Overvi
 
         public OverviewViewHolder(View view){
             super(view);
-            title = view.findViewById(R.id.kurs_id);
-            note = view.findViewById(R.id.kurs_klasse);
-            index = view.findViewById(R.id.kurs_id);
+            title = view.findViewById(R.id.overview_title);
+            note = view.findViewById(R.id.overview_grade);
+            index = view.findViewById(R.id.overview_grade_index);
+            average = view.findViewById(R.id.overview_average);
+
         }
 
         public void bind(final Grade data) {
-
+            title.setText(data.getBeschreibung());
+            note.setText(data.getNote());
+            //index.setText();
+            //average.setText(data.get);
         }
     }
 }

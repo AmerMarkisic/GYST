@@ -102,8 +102,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemClick
     @Override
     public void onItemClick(View childView, int position) {
         int id = (int) adapter.getItemId(position);
-
-        Intent intent = new Intent(this, StudentActivity.class);
+        Intent intent = new Intent(MainActivity.this, StudentActivity.class);
         intent.putExtra("courseId", id);
 
         startActivity(intent);

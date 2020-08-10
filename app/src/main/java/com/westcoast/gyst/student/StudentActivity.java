@@ -50,7 +50,7 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
         rv.addOnItemTouchListener(new RecyclerItemClickListener(this, this));
         fab = findViewById(R.id.fab);
 
-        courseId = Integer.parseInt(getIntent().getStringExtra("courseId"));
+        courseId = getIntent().getIntExtra("courseId",0);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

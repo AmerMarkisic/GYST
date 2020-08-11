@@ -1,5 +1,6 @@
 package com.westcoast.gyst.ui.students;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.HapticFeedbackConstants;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.orm.SugarContext;
+import com.westcoast.gyst.ui.courses.CourseActivity;
 import com.westcoast.gyst.ui.courses.CreateCourseDialog;
 import com.westcoast.gyst.ui.courses.EditCourseDialog;
 import com.westcoast.gyst.R;
@@ -21,6 +23,7 @@ import com.westcoast.gyst.db.entities.Course;
 import com.westcoast.gyst.db.entities.Student;
 import com.westcoast.gyst.db.adapters.StudentAdapter;
 import com.westcoast.gyst.infrastructure.RecyclerItemClickListener;
+import com.westcoast.gyst.ui.overview.OverviewActivity;
 
 import java.util.List;
 
@@ -114,7 +117,11 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
 
     @Override
     public void onItemClick(View childView, int position) {
+        int id = (int) adapter.getItemId(position);
+        Intent intent = new Intent(StudentActivity.this, OverviewActivity.class);
+        intent.putExtra("schuelerId", id);
 
+        startActivity(intent);
 
     }
 

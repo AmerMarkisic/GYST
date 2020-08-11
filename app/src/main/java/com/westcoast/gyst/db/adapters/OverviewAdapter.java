@@ -20,7 +20,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.Overvi
     private List<Grade> dtList = new ArrayList<Grade>();
     private Context context;
     private String className;
-    private long average;
+    private String averageText;
 
     public OverviewAdapter(List<Grade> list, Context context) {
         this.context = context;
@@ -32,9 +32,8 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.Overvi
         return dtList.get(position).getId();
     }
 
-    public OverviewAdapter(List<Grade> list, long average) {
+    public OverviewAdapter(List<Grade> list) {
         this.dtList = list;
-        this.average = average;
     }
 
     @NonNull
@@ -46,7 +45,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.Overvi
 
     @Override
     public void onBindViewHolder(@NonNull OverviewAdapter.OverviewViewHolder holder, int position) {
-        holder.bind(dtList.get(position), this.average);
+        holder.bind(dtList.get(position));
     }
 
     @Override
@@ -54,25 +53,24 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.Overvi
         return dtList.size();
     }
 
-    public class OverviewViewHolder extends RecyclerView.ViewHolder{
-        public TextView title;
+    public static class OverviewViewHolder extends RecyclerView.ViewHolder{
         public TextView note;
         public TextView index;
-        public TextView average;
+        public TextView description;
+        public static int counter;
 
         public OverviewViewHolder(View view) {
             super(view);
-            title = view.findViewById(R.id.overview_title);
             note = view.findViewById(R.id.overview_grade);
             index = view.findViewById(R.id.overview_grade_index);
-            average = view.findViewById(R.id.overview_average);
+            description = view.findViewById(R.id.overview_description);
         }
 
-        public void bind(final Grade data, long averageGrade) {
-            title.setText(data.getBeschreibung());
+        public void bind(final Grade data) {
             note.setText(data.getNote());
-            //index.setText();
-            average.setText(String.valueOf(averageGrade));
+            description.setText(data.getBeschreibung());
+            index.setText(String.valueOf(counter) + ".");
+            counter++;
         }
     }
 }

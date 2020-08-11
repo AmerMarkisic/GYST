@@ -11,6 +11,12 @@ public class Grade extends SugarRecord {
     public Grade() {
     }
 
+    public Grade(String beschreibung, String note, int schuelerId) {
+        this.beschreibung = beschreibung;
+        this.note = note;
+        this.schuelerId = schuelerId;
+    }
+
     public String getBeschreibung() {
         return beschreibung;
     }
@@ -20,7 +26,7 @@ public class Grade extends SugarRecord {
     }
 
     public String getNote() {
-        return note;
+        return note.isEmpty() ? "1" : note;
     }
 
     public void setNote(String note) {

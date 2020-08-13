@@ -73,4 +73,6 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.Overvi
             counter++;
         }
     }
+
+
 }

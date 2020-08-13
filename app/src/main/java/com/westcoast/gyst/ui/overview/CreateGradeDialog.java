@@ -18,7 +18,7 @@ import com.westcoast.gyst.db.entities.Grade;
 
 public class CreateGradeDialog extends DialogFragment {
 
-    public static final String TAG = "create_course_Dialog";
+    public static final String TAG = "create_grade_Dialog";
 
     private androidx.appcompat.widget.Toolbar toolbar;
 

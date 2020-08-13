@@ -17,7 +17,7 @@
         android:id="@+id/student_average"
         android:layout_width="410dp"
         android:layout_height="48dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:fontFamily="@font/roboto"
@@ -26,35 +26,22 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/student_full_name"
-        android:layout_width="412dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="41dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
-        android:textColor="#707070"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/student_average" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/student_email"
         android:layout_width="411dp"
         android:layout_height="41dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/roboto"
         android:gravity="center_horizontal"
         android:textColor="#CACACA"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/student_full_name" />
 
@@ -64,13 +51,29 @@
         android:layout_height="320dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/student_email" />
+
+    <TextView
+        android:id="@+id/student_full_name"
+        android:layout_width="412dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:textColor="#707070"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_average" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

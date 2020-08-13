@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.HapticFeedbackConstants;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,14 +17,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.orm.SugarContext;
 import com.westcoast.gyst.R;
 import com.westcoast.gyst.db.adapters.OverviewAdapter;
+import com.westcoast.gyst.db.adapters.StudentAdapter;
 import com.westcoast.gyst.db.entities.Grade;
 import com.westcoast.gyst.db.entities.Student;
+import com.westcoast.gyst.infrastructure.RecyclerItemClickListener;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-public class OverviewActivity extends AppCompatActivity {
+public class OverviewActivity extends AppCompatActivity implements RecyclerItemClickListener.OnItemClickListener,View.OnCreateContextMenuListener {
     private int schuelerId;
     private Student student;
 
@@ -61,7 +66,7 @@ public class OverviewActivity extends AppCompatActivity {
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
-
+        rv.addOnItemTouchListener(new RecyclerItemClickListener(this, this));
         refreshView();
 
 
@@ -120,6 +125,48 @@ public class OverviewActivity extends AppCompatActivity {
         rv.setAdapter(adapter);
     }
 
+    @Override
+    public void onItemClick(View childView, int position) {
+    }
+
+    @Override
+    public void onItemLongPress(View childView, int position) {
+        getWindow().getDecorView().performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+        registerForContextMenu(childView);
+        openContextMenu(childView);
+        unregisterForContextMenu(childView);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+        OverviewAdapter.OverviewViewHolder holder = (OverviewAdapter.OverviewViewHolder)rv.getChildViewHolder(view);
+        int position = holder.getAdapterPosition();
+
+        int id = (int) adapter.getItemId(position);
+
+        contextMenu.add(1,id, 0, "Bearbeiten").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                EditGradeDialog.display(getSupportFragmentManager(), menuItem.getItemId());
+                return true;
+            }
+        });
+        contextMenu.add(2,id, 0, "Löschen").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Grade grade = Grade.findById(Grade.class, menuItem.getItemId());
+                grade.delete();
+                refreshView();
+                return true;
+            }
+        });
+    }
+
+    public void showCreateDialog(){
+        CreateGradeDialog.display(getSupportFragmentManager(), schuelerId);
+    }
+
     private String replaceSetDecimalSeparator(String s) {
         return s.replace(',', '.');
     }
@@ -130,9 +177,5 @@ public class OverviewActivity extends AppCompatActivity {
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(places, RoundingMode.HALF_UP);
         return bd.doubleValue();
-    }
-
-    public void showCreateDialog(){
-        CreateGradeDialog.display(getSupportFragmentManager(), schuelerId);
     }
 }

@@ -3,9 +3,11 @@ package com.westcoast.gyst.ui.overview;
 import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
@@ -68,6 +70,7 @@ public class EditGradeDialog extends DialogFragment {
         fab = view.findViewById(R.id.grade_create);
         beschreibung = view.findViewById(R.id.gradeDialog_beschreibung);
         note = view.findViewById(R.id.gradeDialog_note);
+        note.setRawInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
         
         beschreibung.setText(grade.getBeschreibung());
         note.setText(grade.getNote());
@@ -87,8 +90,16 @@ public class EditGradeDialog extends DialogFragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void save(){
+
+
         grade.setBeschreibung(beschreibung.getText().toString());
-        grade.setNote(note.getText().toString());
+        boolean gradeIsValid = grade.setNote(note.getText().toString());
+        if (!gradeIsValid) {
+            Toast.makeText(getActivity(),
+                    "Die Note muss zwischen 1 und 6 liegen!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         grade.save();
         ((OverviewActivity)getActivity()).refreshView();
         dismiss();

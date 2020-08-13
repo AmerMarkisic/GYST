@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
@@ -84,7 +85,14 @@ public class CreateGradeDialog extends DialogFragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void save(){
-        Grade grade = new Grade(beschreibung.getText().toString(), note.getText().toString(), schuelerId);
+        Grade grade = new Grade(beschreibung.getText().toString(), schuelerId);
+        boolean gradeIsValid = grade.setNote(note.getText().toString());
+        if (!gradeIsValid) {
+            Toast.makeText(getActivity(),
+                    "Die Note muss zwischen 1 und 6 liegen!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         grade.save();
         ((OverviewActivity)getActivity()).refreshView();
         dismiss();

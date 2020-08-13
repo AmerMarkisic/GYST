@@ -4,16 +4,22 @@ import com.orm.SugarRecord;
 
 public class Grade extends SugarRecord {
 
-    String beschreibung;
-    String note;
-    int schuelerId;
+    private String beschreibung;
+    private String note;
+    private int schuelerId;
 
     public Grade() {
     }
 
+    public Grade(String beschreibung, int schuelerId) {
+        this.beschreibung = beschreibung;
+        this.schuelerId = schuelerId;
+    }
+
+
     public Grade(String beschreibung, String note, int schuelerId) {
         this.beschreibung = beschreibung;
-        this.note = note;
+        this.setNote(note);
         this.schuelerId = schuelerId;
     }
 
@@ -29,8 +35,18 @@ public class Grade extends SugarRecord {
         return note.isEmpty() ? "1" : note;
     }
 
-    public void setNote(String note) {
+    public boolean setNote(String note) {
+        try {
+            Double parsedVal = Double.parseDouble(note);
+            if (Double.isNaN(parsedVal) || parsedVal < 1 || parsedVal > 6) {
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
         this.note = note;
+        return true;
     }
 
     public int getSchuelerId() {

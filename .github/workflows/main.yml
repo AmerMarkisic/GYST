@@ -32,8 +32,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          artifacts: "app.zip/*.apk"
           tag_name: ${{ github.ref }}
-          release_name: APK Release ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
       - name: Upload Release Asset

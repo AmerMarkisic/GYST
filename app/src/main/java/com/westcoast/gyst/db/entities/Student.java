@@ -40,7 +40,7 @@ public class Student extends SugarRecord {
     }
 
     public void setCourseId(int courseId) {
-        courseId = courseId;
+        this.courseId = courseId;
     }
 
     String vorname;

@@ -27,10 +27,9 @@ public class EditCourseDialog extends DialogFragment {
     private TextInputEditText klasse;
     private TextInputEditText zeit;
 
-    public static EditCourseDialog display(FragmentManager fragmentManager, int id){
+    public static void display(FragmentManager fragmentManager, int id){
         EditCourseDialog dialog = new EditCourseDialog(id);
         dialog.show(fragmentManager, TAG);
-        return dialog;
     }
 
     public EditCourseDialog(int id){
@@ -70,12 +69,7 @@ public class EditCourseDialog extends DialogFragment {
         klasse.setText(course.getKlasse());
         zeit.setText(course.getZeit());
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                save();
-            }
-        });
+        fab.setOnClickListener(view1 -> save());
 
         toolbar = view.findViewById(R.id.toolbar);
 

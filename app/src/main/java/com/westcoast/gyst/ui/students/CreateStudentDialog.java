@@ -33,10 +33,9 @@ public class CreateStudentDialog extends DialogFragment {
     }
 
 
-    public static CreateStudentDialog display(FragmentManager fragmentManager, int courseId){
+    public static void display(FragmentManager fragmentManager, int courseId){
         CreateStudentDialog dialog = new CreateStudentDialog(courseId);
         dialog.show(fragmentManager, TAG);
-        return dialog;
     }
 
 
@@ -70,12 +69,7 @@ public class CreateStudentDialog extends DialogFragment {
         nachname = view.findViewById(R.id.studentDialog_nachname);
         email = view.findViewById(R.id.studentDialog_email);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                save();
-            }
-        });
+        fab.setOnClickListener(view1 -> save());
 
         toolbar = view.findViewById(R.id.toolbar);
 

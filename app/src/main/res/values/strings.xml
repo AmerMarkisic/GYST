@@ -10,4 +10,12 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="NotenDurchschnitt">TextView</string>
+    <string name="klasse">Klasse</string>
+    <string name="note">Note</string>
+    <string name="beschreibung">Beschreibung</string>
+    <string name="zeit">Zeit</string>
+    <string name="fach">Fach</string>
+    <string name="vorname">Vorname</string>
+    <string name="nachname">Nachname</string>
+    <string name="e_mail">E-Mail</string>
 </resources>

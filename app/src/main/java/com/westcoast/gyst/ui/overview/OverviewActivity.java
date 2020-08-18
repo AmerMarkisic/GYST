@@ -1,23 +1,22 @@
 package com.westcoast.gyst.ui.overview;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.HapticFeedbackConstants;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Build;
-import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.HapticFeedbackConstants;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.orm.SugarContext;
 import com.westcoast.gyst.R;
 import com.westcoast.gyst.db.adapters.OverviewAdapter;
-import com.westcoast.gyst.db.adapters.StudentAdapter;
 import com.westcoast.gyst.db.entities.Grade;
 import com.westcoast.gyst.db.entities.Student;
 import com.westcoast.gyst.infrastructure.RecyclerItemClickListener;
@@ -60,7 +59,7 @@ public class OverviewActivity extends AppCompatActivity implements RecyclerItemC
         if (student == null)
             return;
 
-        rv = (RecyclerView)findViewById(R.id.recycleView);
+        rv = findViewById(R.id.recycleView);
         if (rv == null)
             return;
 
@@ -72,13 +71,10 @@ public class OverviewActivity extends AppCompatActivity implements RecyclerItemC
 
         fab = findViewById(R.id.overview_fab);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fab.setOnClickListener(view -> {
 
-                showCreateDialog();
-                refreshView();
-            }
+            showCreateDialog();
+            refreshView();
         });
     }
 
@@ -100,9 +96,10 @@ public class OverviewActivity extends AppCompatActivity implements RecyclerItemC
         SugarContext.init(this);
     }
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void refreshView() {
-        OverviewAdapter.OverviewViewHolder.counter = 1;
+        OverviewAdapter.OverviewViewHolder._counter = 1;
         double totalGradeValue;
 
         List<Grade> grades = Grade.find(Grade.class, "schueler_id = ?", String.valueOf(schuelerId));
@@ -137,6 +134,7 @@ public class OverviewActivity extends AppCompatActivity implements RecyclerItemC
         unregisterForContextMenu(childView);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
         OverviewAdapter.OverviewViewHolder holder = (OverviewAdapter.OverviewViewHolder)rv.getChildViewHolder(view);
@@ -144,22 +142,15 @@ public class OverviewActivity extends AppCompatActivity implements RecyclerItemC
 
         int id = (int) adapter.getItemId(position);
 
-        contextMenu.add(1,id, 0, "Bearbeiten").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                EditGradeDialog.display(getSupportFragmentManager(), menuItem.getItemId());
-                return true;
-            }
+        contextMenu.add(1,id, 0, "Bearbeiten").setOnMenuItemClickListener(menuItem -> {
+            EditGradeDialog.display(getSupportFragmentManager(), menuItem.getItemId());
+            return true;
         });
-        contextMenu.add(2,id, 0, "Löschen").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                Grade grade = Grade.findById(Grade.class, menuItem.getItemId());
-                grade.delete();
-                refreshView();
-                return true;
-            }
+        contextMenu.add(2,id, 0, "Löschen").setOnMenuItemClickListener(menuItem -> {
+            Grade grade = Grade.findById(Grade.class, menuItem.getItemId());
+            grade.delete();
+            refreshView();
+            return true;
         });
     }
 

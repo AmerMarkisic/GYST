@@ -27,10 +27,9 @@ public class CreateCourseDialog extends DialogFragment {
 
 
 
-    public static CreateCourseDialog display(FragmentManager fragmentManager){
+    public static void display(FragmentManager fragmentManager){
         CreateCourseDialog dialog = new CreateCourseDialog();
         dialog.show(fragmentManager, TAG);
-        return dialog;
     }
 
 
@@ -64,12 +63,7 @@ public class CreateCourseDialog extends DialogFragment {
         klasse = view.findViewById(R.id.courseDialog_klasse);
         zeit = view.findViewById(R.id.courseDialog_zeit);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                save();
-            }
-        });
+        fab.setOnClickListener(view1 -> save());
 
         toolbar = view.findViewById(R.id.toolbar);
 

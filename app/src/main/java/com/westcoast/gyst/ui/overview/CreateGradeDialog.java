@@ -3,6 +3,7 @@ package com.westcoast.gyst.ui.overview;
 import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,10 +35,9 @@ public class CreateGradeDialog extends DialogFragment {
         this.schuelerId = schuelerId;
     }
 
-    public static CreateGradeDialog display(FragmentManager fragmentManager, int schuelerId){
+    public static void display(FragmentManager fragmentManager, int schuelerId){
         CreateGradeDialog dialog = new CreateGradeDialog(schuelerId);
         dialog.show(fragmentManager, TAG);
-        return dialog;
     }
 
 
@@ -56,11 +56,13 @@ public class CreateGradeDialog extends DialogFragment {
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
             dialog.getWindow().setLayout(width, height);
             dialog.getWindow().setWindowAnimations(R.style.AppTheme_Slide);
+
         }
     }
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         super.onCreateView(inflater, container, savedInstanceState);
@@ -69,14 +71,9 @@ public class CreateGradeDialog extends DialogFragment {
         fab = view.findViewById(R.id.grade_create);
         beschreibung = view.findViewById(R.id.gradeDialog_beschreibung);
         note = view.findViewById(R.id.gradeDialog_note);
+        note.setInputType(InputType.TYPE_CLASS_NUMBER);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View view) {
-                save();
-            }
-        });
+        fab.setOnClickListener(view1 -> save());
 
         toolbar = view.findViewById(R.id.toolbar);
 

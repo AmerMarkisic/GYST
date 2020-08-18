@@ -16,7 +16,6 @@
             android:layout_height="?attr/actionBarSize"
             tools:ignore="RtlCompat"
             app:contentInsetStartWithNavigation="0dp"
-            app:navigationIcon="@drawable/ic_close_white_24dp"
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -34,10 +33,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
-            android:background="@android:color/white"
-            android:hint="Beschreibung">
+            android:hint="@string/beschreibung">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:maxLength="30"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/gradeDialog_beschreibung"/>
@@ -48,8 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
-            android:background="@android:color/white"
-            android:hint="Note">
+            android:hint="@string/note">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -65,9 +64,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_done_white_24dp"
-        app:backgroundTint="@color/colorAccent"
         tools:ignore="VectorDrawableCompat" />
 
 

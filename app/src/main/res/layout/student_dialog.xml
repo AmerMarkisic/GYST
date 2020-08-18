@@ -16,7 +16,6 @@
             android:layout_height="?attr/actionBarSize"
             tools:ignore="RtlCompat"
             app:contentInsetStartWithNavigation="0dp"
-            app:navigationIcon="@drawable/ic_close_white_24dp"
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -34,10 +33,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
-            android:background="@android:color/white"
-            android:hint="Vorname">
+            android:hint="@string/vorname">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:maxLength="20"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/studentDialog_vorname"/>
@@ -48,10 +48,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
-            android:background="@android:color/white"
-            android:hint="Nachname">
+            android:hint="@string/nachname">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:maxLength="20"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/studentDialog_nachname"/>
@@ -62,10 +63,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
-            android:background="@android:color/white"
-            android:hint="E-Mail">
+            android:hint="@string/e_mail">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:maxLength="40"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/studentDialog_email"/>
@@ -78,9 +80,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_done_white_24dp"
-        app:backgroundTint="@color/colorAccent"
         tools:ignore="VectorDrawableCompat" />
 
 

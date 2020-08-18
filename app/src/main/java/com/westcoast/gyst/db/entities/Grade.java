@@ -16,13 +16,6 @@ public class Grade extends SugarRecord {
         this.schuelerId = schuelerId;
     }
 
-
-    public Grade(String beschreibung, String note, int schuelerId) {
-        this.beschreibung = beschreibung;
-        this.setNote(note);
-        this.schuelerId = schuelerId;
-    }
-
     public String getBeschreibung() {
         return beschreibung;
     }
@@ -37,7 +30,7 @@ public class Grade extends SugarRecord {
 
     public boolean setNote(String note) {
         try {
-            Double parsedVal = Double.parseDouble(note);
+            double parsedVal = Double.parseDouble(note);
             if (Double.isNaN(parsedVal) || parsedVal < 1 || parsedVal > 6) {
                 return false;
             }
@@ -47,13 +40,5 @@ public class Grade extends SugarRecord {
 
         this.note = note;
         return true;
-    }
-
-    public int getSchuelerId() {
-        return schuelerId;
-    }
-
-    public void setSchuelerId(int schuelerId) {
-        this.schuelerId = schuelerId;
     }
 }

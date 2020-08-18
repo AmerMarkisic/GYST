@@ -41,18 +41,17 @@ public class CourseActivity extends AppCompatActivity implements RecyclerItemCli
 
         SugarContext.init(this);
 
-        rv = (RecyclerView)findViewById(R.id.recycleView);
+        rv = findViewById(R.id.recycleView);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerItemClickListener(this, this));
         fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fab.setOnClickListener(view -> {
 
-                showCreateDialog();
-                refresh();
-            }
+            fab.setEnabled(false);
+            showCreateDialog();
+
+            refresh();
         });
 
         refresh();
@@ -61,7 +60,10 @@ public class CourseActivity extends AppCompatActivity implements RecyclerItemCli
 
 
 
+
+
     public void refresh(){
+        fab.setEnabled(true);
         List<Course> courses = Course.listAll(Course.class);
         adapter = new CourseAdapter(courses);
         rv.setAdapter(adapter);
@@ -137,21 +139,15 @@ public class CourseActivity extends AppCompatActivity implements RecyclerItemCli
 
         int id = (int) adapter.getItemId(position);
 
-        contextMenu.add(1,id, 0, "Bearbeiten").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                EditCourseDialog.display(getSupportFragmentManager(), menuItem.getItemId());
-                return true;
-            }
+        contextMenu.add(1,id, 0, "Bearbeiten").setOnMenuItemClickListener(menuItem -> {
+            EditCourseDialog.display(getSupportFragmentManager(), menuItem.getItemId());
+            return true;
         });
-        contextMenu.add(2,id, 0, "Löschen").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                Course course = Course.findById(Course.class, menuItem.getItemId());
-                course.delete();
-                refresh();
-                return true;
-            }
+        contextMenu.add(2,id, 0, "Löschen").setOnMenuItemClickListener(menuItem -> {
+            Course course = Course.findById(Course.class, menuItem.getItemId());
+            course.delete();
+            refresh();
+            return true;
         });
     }
 }

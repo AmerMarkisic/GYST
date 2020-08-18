@@ -27,10 +27,9 @@ public class EditStudentDialog extends DialogFragment {
     private TextInputEditText nachname;
     private TextInputEditText email;
 
-    public static EditStudentDialog display(FragmentManager fragmentManager, int id){
+    public static void display(FragmentManager fragmentManager, int id){
         EditStudentDialog dialog = new EditStudentDialog(id);
         dialog.show(fragmentManager, TAG);
-        return dialog;
     }
 
     public EditStudentDialog(int id){
@@ -70,12 +69,7 @@ public class EditStudentDialog extends DialogFragment {
         nachname.setText(student.getNachname());
         email.setText(student.getEmail());
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                save();
-            }
-        });
+        fab.setOnClickListener(view1 -> save());
 
         toolbar = view.findViewById(R.id.toolbar);
 

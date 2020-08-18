@@ -35,10 +35,9 @@ public class EditGradeDialog extends DialogFragment {
         grade = Grade.findById(Grade.class, gradeId);
     }
 
-    public static EditGradeDialog display(FragmentManager fragmentManager, int gradeId){
+    public static void display(FragmentManager fragmentManager, int gradeId){
         EditGradeDialog dialog = new EditGradeDialog(gradeId);
         dialog.show(fragmentManager, TAG);
-        return dialog;
     }
 
 
@@ -62,6 +61,7 @@ public class EditGradeDialog extends DialogFragment {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         super.onCreateView(inflater, container, savedInstanceState);
@@ -75,13 +75,7 @@ public class EditGradeDialog extends DialogFragment {
         beschreibung.setText(grade.getBeschreibung());
         note.setText(grade.getNote());
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View view) {
-                save();
-            }
-        });
+        fab.setOnClickListener(view1 -> save());
 
         toolbar = view.findViewById(R.id.toolbar);
 

@@ -18,4 +18,5 @@
     <string name="vorname">Vorname</string>
     <string name="nachname">Nachname</string>
     <string name="e_mail">E-Mail</string>
+    <string name="image">image</string>
 </resources>

@@ -58,10 +58,6 @@ public class CourseActivity extends AppCompatActivity implements RecyclerItemCli
 
     }
 
-
-
-
-
     public void refresh(){
         fab.setEnabled(true);
         List<Course> courses = Course.listAll(Course.class);

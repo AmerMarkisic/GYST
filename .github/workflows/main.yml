@@ -1,18 +1,15 @@
-name: Android Pull Request & Master CI
+name: CI
 
 on:
-  pull_request:
-    branches:
-      - 'master'
   push:
-    branches:
-      - 'master'
+    branches: 
+      - master
 
 jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
 
     steps:
@@ -34,5 +31,5 @@ jobs:
       with:
         tag_name: v1.0.0
         asset_path: app/build/outputs/apk/debug/app-debug.apk
-        asset_name: app.apk
+        asset_name: Example.apk
         asset_content_type: application/zip

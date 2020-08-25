@@ -70,10 +70,10 @@ public class EditGradeDialog extends DialogFragment {
         fab = view.findViewById(R.id.grade_create);
         beschreibung = view.findViewById(R.id.gradeDialog_beschreibung);
         note = view.findViewById(R.id.gradeDialog_note);
-        note.setRawInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
-        
+
         beschreibung.setText(grade.getBeschreibung());
         note.setText(grade.getNote());
+        note.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL );
 
         fab.setOnClickListener(view1 -> save());
 

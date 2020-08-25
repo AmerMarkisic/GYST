@@ -24,7 +24,7 @@
         </activity>
         <activity
             android:name=".ui.students.StudentActivity"
-            android:label="Schueler"
+            android:label="Schüler"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity

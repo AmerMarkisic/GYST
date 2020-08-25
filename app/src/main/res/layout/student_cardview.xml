@@ -16,17 +16,20 @@
             android:layout_height="wrap_content"
             android:id="@+id/student_id"
             android:visibility="gone" />
+
         <TextView
+            android:id="@+id/student_nachname"
             android:layout_width="match_parent"
-            android:padding="1dp"
             android:layout_height="wrap_content"
+            android:padding="1dp" />
+
+        <TextView
             android:id="@+id/student_vorname"
-            android:textSize="18sp" />
-        <TextView
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:padding="1dp"
-            android:id="@+id/student_nachname" />
+            android:textSize="18sp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -11,10 +11,6 @@ public class Student extends SugarRecord {
         return nachname;
     }
 
-    public String getDurchschnitt() {
-        return durchschnitt;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -31,10 +27,6 @@ public class Student extends SugarRecord {
         this.nachname = nachname;
     }
 
-    public void setDurchschnitt(String durchschnitt) {
-        this.durchschnitt = durchschnitt;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -45,7 +37,6 @@ public class Student extends SugarRecord {
 
     String vorname;
     String nachname;
-    String durchschnitt;
     String email;
     int courseId;
 

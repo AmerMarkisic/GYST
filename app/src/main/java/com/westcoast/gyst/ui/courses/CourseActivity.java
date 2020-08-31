@@ -118,6 +118,7 @@ public class CourseActivity extends AppCompatActivity implements RecyclerItemCli
             return true;
         });
         contextMenu.add(2,id, 0, "Löschen").setOnMenuItemClickListener(menuItem -> {
+            SugarContext.init(this);
             Course course = Course.findById(Course.class, menuItem.getItemId());
             course.delete();
             refresh();

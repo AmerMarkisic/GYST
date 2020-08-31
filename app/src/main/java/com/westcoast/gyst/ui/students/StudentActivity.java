@@ -89,13 +89,18 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        SugarContext.init(this);
+    }
+
+    @Override
     public void onItemClick(View childView, int position) {
         int id = (int) adapter.getItemId(position);
         Intent intent = new Intent(StudentActivity.this, OverviewActivity.class);
         intent.putExtra("schuelerId", id);
 
         startActivity(intent);
-
     }
 
     @Override
@@ -118,6 +123,7 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
             return true;
         });
         contextMenu.add(2,id, 0, "Löschen").setOnMenuItemClickListener(menuItem -> {
+            SugarContext.init(this);
             Student student = Student.findById(Student.class, menuItem.getItemId());
             student.delete();
             refresh();

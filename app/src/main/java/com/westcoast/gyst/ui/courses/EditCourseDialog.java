@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
@@ -77,6 +78,13 @@ public class EditCourseDialog extends DialogFragment {
     }
 
     public void save(){
+        if(fach.getText().toString().equals("")
+                || klasse.getText().toString().equals("")
+                || zeit.getText().toString().equals("")){
+            Toast.makeText(getActivity(),
+                    "Bitte überprüfen Sie Ihre Eingabe. Lassen Sie bitte keine Felder frei!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         course.setFach(fach.getText().toString());
         course.setKlasse(klasse.getText().toString());
         course. setZeit(zeit.getText().toString());

@@ -11,9 +11,10 @@ public class Grade extends SugarRecord {
     public Grade() {
     }
 
-    public Grade(String beschreibung, int schuelerId) {
+    public Grade(String beschreibung,String note ,int schuelerId) {
         this.beschreibung = beschreibung;
         this.schuelerId = schuelerId;
+        this.note = note;
     }
 
     public String getBeschreibung() {

@@ -34,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
+            app:boxBackgroundColor="@android:color/white"
             android:hint="@string/vorname">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -49,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
+            app:boxBackgroundColor="@android:color/white"
             android:hint="@string/nachname">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -64,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
+            app:boxBackgroundColor="@android:color/white"
             android:hint="@string/e_mail">
 
             <com.google.android.material.textfield.TextInputEditText

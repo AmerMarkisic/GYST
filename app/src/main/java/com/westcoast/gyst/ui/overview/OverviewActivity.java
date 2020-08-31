@@ -19,7 +19,7 @@ import com.westcoast.gyst.R;
 import com.westcoast.gyst.db.adapters.OverviewAdapter;
 import com.westcoast.gyst.db.entities.Grade;
 import com.westcoast.gyst.db.entities.Student;
-import com.westcoast.gyst.infrastructure.RecyclerItemClickListener;
+import com.westcoast.gyst.common.RecyclerItemClickListener;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

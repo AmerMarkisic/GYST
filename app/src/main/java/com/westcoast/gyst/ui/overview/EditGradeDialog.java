@@ -84,15 +84,17 @@ public class EditGradeDialog extends DialogFragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void save(){
-
-
-        grade.setBeschreibung(beschreibung.getText().toString());
-        boolean gradeIsValid = grade.setNote(note.getText().toString());
-        if (!gradeIsValid) {
+        if(beschreibung.getText().toString().equals("")
+                || note.getText().toString().equals("")
+                || Double.parseDouble(note.getText().toString()) < 1
+                || Double.parseDouble(note.getText().toString()) > 6){
             Toast.makeText(getActivity(),
-                    "Die Note muss zwischen 1 und 6 liegen!", Toast.LENGTH_LONG).show();
+                    "Bitte überprüfen Sie Ihre Eingabe. Lassen Sie bitte keine Felder frei und tragen Sie eine Note von 1-6 ein!", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        grade.setBeschreibung(beschreibung.getText().toString());
+        grade.setNote(note.getText().toString());
 
         grade.save();
         ((OverviewActivity)getActivity()).refreshView();

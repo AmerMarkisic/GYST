@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -77,6 +79,13 @@ public class CreateStudentDialog extends DialogFragment {
     }
 
     public void save(){
+        if(vorname.getText().toString().equals("")
+            || nachname.getText().toString().equals("")
+            || email.getText().toString().equals("")){
+            Toast.makeText(getActivity(),
+                    "Bitte überprüfen Sie Ihre Eingabe. Lassen Sie bitte keine Felder frei!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Student student = new Student(vorname.getText().toString(), nachname.getText().toString(), email.getText().toString(), this.courseId);
         student.save();
         ((StudentActivity)getActivity()).refresh();

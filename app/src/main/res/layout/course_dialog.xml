@@ -34,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
+            app:boxBackgroundColor="@android:color/white"
             android:hint="@string/fach">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -49,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
+            app:boxBackgroundColor="@android:color/white"
             android:hint="@string/klasse">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -64,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin ="12dp"
+            app:boxBackgroundColor="@android:color/white"
             android:hint="@string/zeit">
 
             <com.google.android.material.textfield.TextInputEditText

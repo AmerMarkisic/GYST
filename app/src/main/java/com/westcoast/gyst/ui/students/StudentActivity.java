@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.orm.SugarContext;
 import com.westcoast.gyst.R;
 import com.westcoast.gyst.db.adapters.StudentAdapter;
 import com.westcoast.gyst.db.entities.Student;
@@ -39,7 +38,6 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
 
         setSupportActionBar(toolbar);
 
-        SugarContext.init(this);
 
         rv = findViewById(R.id.recycleView);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -71,30 +69,6 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SugarContext.terminate();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        SugarContext.terminate();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        SugarContext.init(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        SugarContext.init(this);
-    }
-
-    @Override
     public void onItemClick(View childView, int position) {
         int id = (int) adapter.getItemId(position);
         Intent intent = new Intent(StudentActivity.this, OverviewActivity.class);
@@ -123,7 +97,6 @@ public class StudentActivity extends AppCompatActivity implements RecyclerItemCl
             return true;
         });
         contextMenu.add(2,id, 0, "Löschen").setOnMenuItemClickListener(menuItem -> {
-            SugarContext.init(this);
             Student student = Student.findById(Student.class, menuItem.getItemId());
             student.delete();
             refresh();

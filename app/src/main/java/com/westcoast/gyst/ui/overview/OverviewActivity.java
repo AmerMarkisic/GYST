@@ -53,7 +53,6 @@ public class OverviewActivity extends AppCompatActivity implements RecyclerItemC
         if (!(schuelerId > 0))
             return;
 
-        SugarContext.init(this);
 
         student = Student.findById(Student.class, schuelerId);
         if (student == null)
@@ -76,24 +75,6 @@ public class OverviewActivity extends AppCompatActivity implements RecyclerItemC
             showCreateDialog();
             refreshView();
         });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SugarContext.terminate();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        SugarContext.terminate();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        SugarContext.init(this);
     }
 
     @SuppressLint("SetTextI18n")

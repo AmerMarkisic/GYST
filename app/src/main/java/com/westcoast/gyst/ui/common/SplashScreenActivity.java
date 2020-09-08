@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.orm.SugarContext;
 import com.westcoast.gyst.R;
 import com.westcoast.gyst.ui.courses.CourseActivity;
 
@@ -20,6 +21,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen_layout);
+        SugarContext.init(this);
 
         new Handler().postDelayed(() -> {
             Intent i = new Intent(SplashScreenActivity.this, CourseActivity.class);

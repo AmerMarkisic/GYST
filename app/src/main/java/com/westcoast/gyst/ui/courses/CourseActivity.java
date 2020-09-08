@@ -39,8 +39,6 @@ public class CourseActivity extends AppCompatActivity implements RecyclerItemCli
 
         setSupportActionBar(toolbar);
 
-        SugarContext.init(this);
-
         rv = findViewById(R.id.recycleView);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
@@ -68,24 +66,6 @@ public class CourseActivity extends AppCompatActivity implements RecyclerItemCli
 
     public void showCreateDialog(){
         CreateCourseDialog.display(getSupportFragmentManager());
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SugarContext.terminate();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        SugarContext.terminate();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        SugarContext.init(this);
     }
 
     @Override
@@ -118,7 +98,6 @@ public class CourseActivity extends AppCompatActivity implements RecyclerItemCli
             return true;
         });
         contextMenu.add(2,id, 0, "Löschen").setOnMenuItemClickListener(menuItem -> {
-            SugarContext.init(this);
             Course course = Course.findById(Course.class, menuItem.getItemId());
             course.delete();
             refresh();

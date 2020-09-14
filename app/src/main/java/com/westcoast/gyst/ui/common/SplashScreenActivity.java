@@ -21,7 +21,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen_layout);
-        SugarContext.init(thisn);
+        SugarContext.init(this);
 
         new Handler().postDelayed(() -> {
             Intent i = new Intent(SplashScreenActivity.this, CourseActivity.class);

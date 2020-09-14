@@ -3,15 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="35dp"
     android:clickable="true"
+    android:layout_margin="10dp"
+    android:elevation="10dp"
     android:focusable="true"
+
     android:checkable="true"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:targetApi="lollipop">
 
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:stretchColumns="1">
+        android:stretchColumns="1"
+        tools:targetApi="lollipop">
 
         <TableRow tools:ignore="UselessParent">
 
